@@ -1,0 +1,32 @@
+# poetry.lock
+# data
+data_local/
+notebooks/
+# config.toml
+tmp/
+
+lib
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env
+.env
+pip-log.txt
+pip-delete-this-directory.txt
+.tox
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+tmp
+.git
+.mypy_cache
+.pytest_cache
+.hypothesis
+
+
