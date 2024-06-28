@@ -1,6 +1,8 @@
 # poetry
 # poetry.lock
 # data
+notes.md
+
 data_local/
 notebooks/
 # config.toml

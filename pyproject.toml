@@ -1,0 +1,13 @@
+[tool.poetry]
+name = "forks"
+version = "0.0.1"
+description = "LLM-based routing, think fuzzy if else statements"
+authors = ["Foo <foo@bar.co>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "forks"}]
+repository = "https://github.com/phiweger/forks"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
