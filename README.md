@@ -4,9 +4,9 @@ There are many occasions where you want an LLM to decide between options. For ex
 
 They take a query and a set of options, and return the key to the most likely option. Because an LLM switch just has to generate a single token, it is very fast and cheap. 
 
-> This is just function calling!
+> But this is just function calling!
 
-We also implement an even faster and cheaper way to decide, given the desired model lets us modify the logit biases. This has the added benefit of generating the logits for all options, which can be used to approximate the probability of each option. Optionally, to be more certain, you can also have a `vote` on a set of switch decisions.
+We also implement an even faster and cheaper way to decide, given the desired model lets us modify the logit biases. This has the added benefit of also returning the logits for all options, which can be used to approximate the probability of each option. Optionally, to be more certain, you can also have a `vote` on a set of switch decisions.
 
 ### Run
 
