@@ -1,10 +1,22 @@
 # poetry.lock
 # data
+
 notes.md
+TODO.md
 
 data_local/
 notebooks/
 # config.toml
+
+.env.toml
+.env
+sketch.py
+
+log
+_deprecated/
+_deprecated.py
+# index*
+
 tmp/
 
 lib
