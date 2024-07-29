@@ -1,0 +1,52 @@
+[root]
+text = "You are visiting a monster party, the problem is you are human, and humans are normally eaten, which you try to avoid. You have to pick a monster costume to wear to the party. Which one do you pick?"
+# Feedback not used during routing:
+feedback = "Typical moster costumes are vampire or zombie."
+hint = "Pointy teeth, Transylvania, blood, garlic, bats, night, ..."
+image = "https://asset.memobiotika.de/monsterparty.png"
+caption = "_A monster party_"
+# TODO: Better html?
+# caption = "<em>A monster party</em>"
+
+[root.to.not_eaten]
+if = "Any monster costume."
+comment=""
+labels = ["correct"]
+tests = [
+    "I want to dress up as a vampire.",
+    "A zombie!",
+    "Princess of the undead."
+]
+
+[root.to.eaten]
+if = """
+- Any other harmless costume that is not a monster costume, e. g. rabbit or potatoe.
+- The user is undecided and names more than one costume.
+"""
+comment = "Unfortunately you selected the wrong costume."
+tests = [
+    "A cute princess.",
+    "rabbit",
+    "hm, I do not know, maybe as vampire or as rabbit?",
+    "I'm not sure ...",
+]
+
+
+# We can concatenate all toml files or have a single large one.
+
+[eaten]
+text = "Unfortunately, you have been discovered as being human. You die."
+
+[not_eaten]
+text = "You walk to the bar, and have to order a drink. What do you order?"
+
+[not_eaten.to.success]
+if = "Any monster drink. Typical moster drinks are a bloody mary or tomato juice, ie red liquids."
+labels = ["correct"]
+
+[not_eaten.to.eaten]
+# Note how we link to an existing node.
+if = "Any other drink."
+
+[success]
+text = "Wow, you made it!"

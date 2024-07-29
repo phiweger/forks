@@ -6,7 +6,6 @@ from groq import Groq, AsyncGroq
 import instructor
 from openai import OpenAI, AsyncOpenAI
 
-
 load_dotenv()
 
 

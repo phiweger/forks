@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--
+    <script src="https://unpkg.com/htmx.org@2.0.0" integrity="sha384-wS5l5IKJBvK6sPTKa2WZ1js3d947pvWXbPJ1OmWfEuxLgeHcEbjUUA5i9V5ZkpCw" crossorigin="anonymous"></script>
+
+    wget https://unpkg.com/htmx.org@2.0.0
+    -->
+    <script src="static/htmx/htmx.min.js"></script>
+    <!-- 
+    To make JSON-fomatted POST requests: https://www.submitjson.com/blog/htmx-post-json
+
+    <script src="https://unpkg.com/htmx-ext-json-enc@2.0.0/json-enc.js"></script>
+
+    wget https://unpkg.com/htmx-ext-json-enc@2.0.0/json-enc.js
+    -->
+    <script src="static/htmx/json-enc.js"></script>
+    <!-- 
+    TODO:
+    
+    https://sunscrapers.com/blog/modern-web-dev-fastapi-htmx-daisyui/
+    https://daisyui.com/docs/cdn/
+
+    > daisyUI is a component library for Tailwind CSS. While Tailwind CSS provides utility classes for each CSS rule, daisyUI provides additional component class names to Tailwind CSS to make it faster and easier to build web pages. -- https://daisyui.com/blog/what-is-daisyui/
+    
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    -->
+    <head>
+        <meta charset="utf-8">
+        <title>title</title>
+        <link rel="stylesheet" href="/static/css/styles.css">
+        <!-- <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script> -->
+    </head>
+
+    <!-- https://www.submitjson.com/docs/example-htmx -->
+    <form 
+    id="contactForm"
+    hx-target="#response" 
+    hx-post="/route"
+    hx-ext="json-enc"
+    hx-indicator=".htmx-indicator"
+    onsubmit="setNullIfEmpty()"
+    >
+        <select name="graph">
+            {% for name in graphs %}
+                <option value="{{ name }}">{{ name }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <input type="text" name="user_id" placeholder="user" required><br>
+        <input type="text" name="session_id" placeholder="session"><br>
+        <textarea name="query" placeholder="query"></textarea><br>
+        <button type="submit">Send</button>
+    </form>
+
+    <br>
+    <div> 
+        Router:
+        <span class="htmx-indicator"> 
+            <img src="/static/img/bars.svg"/>
+        </span> 
+    </div>
+
+    <div id="response"></div>
+
+</html>
+
+<!-- Generated using Copilot -->
+<script>
+    function setNullIfEmpty() {
+        const form = document.getElementById('contactForm');
+        const inputs = form.querySelectorAll('input, textarea');
+    
+        inputs.forEach(input => {
+            if (input.value.trim() === '') {
+                input.value = null;
+            }
+        });
+
+    }
+</script>
+

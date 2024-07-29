@@ -2,6 +2,7 @@
 # poetry.lock
 # data
 notes.md
+TODO.md
 
 data_local/
 notebooks/

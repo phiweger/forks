@@ -1,0 +1,14 @@
+[root]
+text = "This is a test. What do you like better, apples or bananas?"
+
+[root.to.yellow]
+if = "A long fruit that is yellow."
+
+[root.to.red]
+if = "A round fruit that is red."
+
+[yellow]
+text = "I like bananas, too."
+
+[red]
+text = "Apples, yum."

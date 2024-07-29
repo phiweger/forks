@@ -44,3 +44,9 @@ r = requests.post("http://127.0.0.1:8000/switch", json=data)
 print(f"State: {r.json()['response']}")
 # State: B
 ```
+
+### Server
+
+```bash
+uvicorn app.main:app --reload
+```

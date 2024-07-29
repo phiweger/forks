@@ -1,0 +1,3 @@
+[route]
+model = "openai/gpt-4o-mini"
+method = "fn_call"

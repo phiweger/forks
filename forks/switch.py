@@ -1,5 +1,6 @@
 from collections import defaultdict, Counter
 import time
+from typing import Literal
 
 from loguru import logger
 import numpy as np
@@ -175,7 +176,7 @@ class AsyncSwitch:
                 # Dynamic literals:
                 # https://github.com/pydantic/pydantic/issues/8905
                 # answer: int = Literal[*labels]  # type: ignore
-                answer: str = Field(..., description=f"Answer only with one of: {self.labels}")  # type: ignore
+                answer: Literal[*self.labels]  # type: ignore
 
             r = await self.client.chat.completions.create(
                 model=self.model,
@@ -187,6 +188,7 @@ class AsyncSwitch:
                 temperature=temperature,
             )
             answer, probs = r.answer, None
+            logger.info(f"Answer: {answer}")
 
         else:
             raise ValueError("Invalid method, available: 'logit_bias', 'fn_call'")
