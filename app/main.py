@@ -83,20 +83,23 @@ async def get_next_step(payload: Request) -> dict:
     try:
         G = shared["graphs"][data.graph]
     except KeyError:
-        raise HTTPException(status_code=404, detail="Graph not found.")
+        msg = f"Graph {data.graph} not found."
+        logger.error(msg)
+        raise HTTPException(status_code=404, detail=msg)
 
     try:
         trav = GraphTraversal(G, shared["engine"], data.user_id, data.session_id)
     except Exception as e:
         # Bubble up the error message.
-        raise HTTPException(status_code=400, detail=str(e))
+        msg = str(e)
+        logger.error(msg)
+        raise HTTPException(status_code=400, detail=msg)
 
     next_step = trav.get_next_node()
     if trav.is_leaf(next_step):
-        raise HTTPException(
-            status_code=400,
-            detail="The current node is a leaf. Reset the session to continue.",
-        )
+        msg = "The current node is a leaf. Reset the session to continue."
+        logger.error(msg)
+        raise HTTPException(status_code=400, detail=msg)
 
     # If there is no query, we just return the current node.
     if data.query:
